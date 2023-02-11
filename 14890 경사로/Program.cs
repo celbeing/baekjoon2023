@@ -18,78 +18,70 @@ class Program
                 map[i, j] = int.Parse(row[j]);
             }
         }
-        count = N * 2;
+        count = N * 2;  // 안되는 경우 1씩 깎기
         // check row
-        int cntH = 0;
         for (int i = 0; i < N; i++)
         {
-            cntH = map[i, 0];
-            bool[] hill = new bool[N];
-            for(int j = 1; j < N; j++)
+            int[] hill = new int[N];
+            for (int j = 1; j < N; j++)
             {
-                if(cntH != map[i, j])
+                switch (map[i, j] - map[i, j - 1])
                 {
-                    if (cntH + 1 == map[i, j])
-                    {
-                        if (j - L < 0)
-                        {
-                            j = N;
-                            count--;
-                            continue;
-                        }
-                        for (int l = 1; l <= L; l++)
-                        {
-                            if (hill[j - l])
-                            {
-                                j = N;
-                                l = L + 1;
-                            }
-                            else if (cntH != map[i, j - l])
-                            {
-                                j = N;
-                                l = L + 1;
-                            }
-                        }
-                        if (j == N)
-                        {
-                            count--;
-                            continue;
-                        }
-                        for (int l = 1; l <= L; l++)
-                            hill[j - l] = true;
-                    }
-                    else if (cntH - 1 == map[i, j])
-                    {
-                        if (j + L > N)
-                        {
-                            j = N;
-                            count--;
-                            continue;
-                        }
-                        for (int l = 0; l < L; l++)
-                        {
-                            if (map[i, j] != map[i, j + l])
-                            {
-                                j = N;
-                                l = L;
-                            }
-                        }
-                        if (j == N)
-                        {
-                            count--;
-                            continue;
-                        }
-                        for (int l = 0; l < L; l++)
-                            hill[j + l] = true;
-                    }
-                    else
-                    {
+                    case 0:
+                        break;
+                    case 1:     // j - 1 까지 L 칸 오르막
+                        if (j - L >= 0)
+                            for (int l = 1; l <= L; l++)
+                                hill[j - l]++;
+                        else
+                        { j = N; hill[0] = 2; }
+                        break;
+                    case -1:    // j 부터 L 칸 내리막
+                        if (j + L <= N)
+                            for (int l = 0; l < L; l++)
+                                hill[j + l]++;
+                        else { j = N; hill[0] = 2; }
+                        break;
+                    default:
                         j = N;
-                        count--;
-                    }
-                }
-                cntH = map[i, j];
+                        hill[0] = 2;
+                        break;
+                }   
             }
+            for (int k = 0; k < N; k++)
+                if (hill[k] > 1) { count--; break; }
+        }
+        // check column
+        for (int i = 0; i < N; i++)
+        {
+            int[] hill = new int[N];
+            for (int j = 1; j < N; j++)
+            {
+                switch (map[j, i] - map[j - 1, i])
+                {
+                    case 0:
+                        break;
+                    case 1:     // j - 1 까지 L 칸 오르막
+                        if (j - L >= 0)
+                            for (int l = 1; l <= L; l++)
+                                hill[j - l]++;
+                        else
+                        { j = N; hill[0] = 2; }
+                        break;
+                    case -1:    // j 부터 L 칸 내리막
+                        if (j + L <= N)
+                            for (int l = 0; l < L; l++)
+                                hill[j + l]++;
+                        else { j = N; hill[0] = 2; }
+                        break;
+                    default:
+                        j = N;
+                        hill[0] = 2;
+                        break;
+                }
+            }
+            for (int k = 0; k < N; k++)
+                if (hill[k] > 1) { count--; break; }
         }
         Console.WriteLine(count);
     }
