@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11725 트리의 부모 찾기", "11725 트리의 부모 찾기.csproj", "{CCAD4C96-4DB6-4AB8-9929-A05631A2625F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCAD4C96-4DB6-4AB8-9929-A05631A2625F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAD4C96-4DB6-4AB8-9929-A05631A2625F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAD4C96-4DB6-4AB8-9929-A05631A2625F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAD4C96-4DB6-4AB8-9929-A05631A2625F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15499BE5-CBF6-42B4-8F40-D26A16F55D2B}
+	EndGlobalSection
+EndGlobal
