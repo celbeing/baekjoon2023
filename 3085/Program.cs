@@ -19,6 +19,7 @@ class program
                 else board[i, j] = 4;
             }
         }
+        count = 0;
 
         // 행 최대값 확인
         for(int i = 0; i < N; i++)
@@ -62,14 +63,14 @@ class program
                 line = 1;
                 for(int k = 0; k < N -1; k++)
                 {
-                    if (board[k, i] == board[k + 1, i]) line++;
+                    if (board[k, j] == board[k + 1, j]) line++;
                     else line = 1;
                     count = Math.Max(count, line);
                 }
                 line = 1;
                 for (int k = 0; k < N - 1; k++)
                 {
-                    if (board[k, i + 1] == board[k + 1, i + 1]) line++;
+                    if (board[k, j + 1] == board[k + 1, j + 1]) line++;
                     else line = 1;
                     count = Math.Max(count, line);
                 }
@@ -94,14 +95,14 @@ class program
                 line = 1;
                 for (int k = 0; k < N - 1; k++)
                 {
-                    if (board[i, k] == board[i, k + 1]) line++;
+                    if (board[j, k] == board[j, k + 1]) line++;
                     else line = 1;
                     count = Math.Max(count, line);
                 }
                 line = 1;
                 for (int k = 0; k < N - 1; k++)
                 {
-                    if (board[i + 1, k] == board[i + 1, k + 1]) line++;
+                    if (board[j + 1, k] == board[j + 1, k + 1]) line++;
                     else line = 1;
                     count = Math.Max(count, line);
                 }
